@@ -1,0 +1,5 @@
+testua = input ('Sartu ezazu testu bat')
+luzeera = len(testua)
+print ('Testuaren lehenengo karakterra: ', testua[0])
+zenbakia = int(input('Sartu '+ str(luzeera) +' baino txikiagoa den zenbaki bat'))
+print ('Posizio horretan dagoen karakterrea: '+ testua[zenbakia-1])
