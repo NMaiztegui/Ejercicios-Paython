@@ -1,12 +1,25 @@
-def hririak_ordenatzen (hiriak):
-    for x in hiriak.values() :
-        if x >= 200000:
-          gehiagokoen_zerrenad = [len(hiriak)]
-          gehiagokoen_zerrenad[x] = hiriak.keys()
+def hiriak_ordenatzen(hiriak):
+    # Hiri populatuenak biltzeko zerrenda bat sortzen dugu
+    gehiagokoen_zerrenda = []
 
-    print(gehiagokoen_zerrenad)
+    # Hiri bakoitza iteratzen dugu
+    for hiri, populazioa in hiriak.items():
+        if populazioa > 200000:
+            gehiagokoen_zerrenda.append(hiri)  # Populazio handiagoak zerrendan sartzen ditugu
+    
+    # Zerrenda alfabetikoki ordenatzen dugu
+    gehiagokoen_zerrenda.sort()
+
+    # Emaitza inprimatzen dugu
+    print(gehiagokoen_zerrenda)
 
 
-gure_hriak = dict(Bilbo = 200800, Donostia = 100000, Irueñea = 203000)
+# Hiriak definitzen ditugu
+gure_hiriak = {
+    "Bilbo": 200800,
+    "Donostia": 100000,
+    "Iruñea": 203000
+}
 
-hririak_ordenatzen( gure_hriak)
+# Funtzioa exekutatzen dugu
+hiriak_ordenatzen(gure_hiriak)
