@@ -4,7 +4,6 @@ def positiboak_ordenatu(zerrenda):
         if zenbaki > 0:
            zerrenda_ordenatua.append(zenbaki)
            zerrenda_ordenatua.sort()
-   
 # iter()  convierte un iterable en un iterador. 
     positiboak= iter(zerrenda_ordenatua)
     emaitza =[]
@@ -16,6 +15,7 @@ def positiboak_ordenatu(zerrenda):
         else:
             emaitza.append(zenbaki)
     print (emaitza)
+
 
 
 
