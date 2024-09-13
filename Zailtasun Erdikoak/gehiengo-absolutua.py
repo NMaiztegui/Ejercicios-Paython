@@ -1,6 +1,6 @@
 def gehiengo_absolutua (votos):
     total_de_votos = sum(votos.values())
-    gehiengo_absolutua= total_de_votos // 2 
+    gehiengo_absolutua= total_de_votos // 2 +1
     found = False
 
     for alderdia , botoa in votos.items():
@@ -17,7 +17,7 @@ def gehiengo_absolutua (votos):
 
 bozkaketa ={
     "x": 25,
-    "b": 42,
+    "b": 43,
     "a" : 17,
     
 }

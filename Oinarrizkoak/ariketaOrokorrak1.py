@@ -6,3 +6,4 @@ L = input()
 b = float (L)
 X= a / b
 print('Gaolina/km',X)
+#beste aukera bat funtzioak erabiltzea
