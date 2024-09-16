@@ -1,6 +1,7 @@
 file = open( "jendea.txt" , mode="r")
 
 allLines = file.readlines()
+print(allLines)
 list_of_all_list = []
 for x in allLines:
 
