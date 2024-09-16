@@ -1,0 +1,16 @@
+file = open( "jendea.txt" , mode="r")
+
+allLines = file.readlines()
+list_of_all_list = []
+for x in allLines:
+
+   list_split = x.split(';')
+
+   for element in list_split:
+      dict={
+         "id" : 
+      }
+
+
+
+print(newList)
