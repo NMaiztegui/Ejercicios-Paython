@@ -39,19 +39,22 @@ def valor_contador (file):
 
 
 #comprobar si la direccion del archivo existe, si existe leer su conteido
+def main ():
+    if os.path.exists("bisitak.txt"):
+        with  open ("bisitak.txt", mode="r+") as file:
+            cont = valor_contador(file)
+            file_read(file)
+            parametro(cont,file) #actualizar cont con el nuevo
+    else:
+        with open ("bisitak.txt", mode="a+")  as file:
+            cont = 0
+            file.write(f"Kontadorea:{cont} \n")
+            file_read(file)
+            parametro(cont,file) #actualizar cont con el nuevo
+        
+    
 
 
-if os.path.exists("bisitak.txt"):
-    with  open ("bisitak.txt", mode="r+") as file:
-        cont = valor_contador(file)
-        file_read(file)
-        parametro(cont,file) #actualizar cont con el nuevo
-else:
-    with open ("bisitak.txt", mode="a+")  as file:
-        cont = 0
-        file.write(f"Kontadorea:{cont} \n")
-        file_read(file)
-        parametro(cont,file) #actualizar cont con el nuevo
-
+main()
 
 
