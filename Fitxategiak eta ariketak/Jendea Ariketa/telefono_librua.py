@@ -53,10 +53,14 @@ def ezabatu_zenbakia(file):
 
      all_bezero=file.readlines()
    
-     for line in all_bezero:
-        list_split = line.split(',')
-
-        if list_split[0]==kontsulta:
+     
+     #abrir el archivo de manera de reescribir,
+     with open ("listin.txt", mode ="w") as file :
+        for line in all_bezero:
+          list_split = line.split(',')
+     #si el bezero pedido coincide con alguno en la lista no vplver a escribir esa linea
+        if list_split[0]!=kontsulta:
+             file.write(f"{list_split[0]},{list_split[1]}\n")
              
 
 
