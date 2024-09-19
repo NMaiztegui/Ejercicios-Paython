@@ -31,17 +31,22 @@ def main ():
             
 def  kontsulta_zenbakia(file): 
    
-   kontsulta=str(input('Sartu kontsultatu nahi dozun bezeroaren izena')) 
+   
    file.seek(0)
-# coger todas la lineas del fichero almacenarlas en un array
+   # coger todas la lineas del fichero almacenarlas en un array
+   print('Hauek dira gure bezeroak\n')
    all_bezero=file.readlines()
-#comprobar todas las lineas, separarlas por coma 
+   bezero={}
    for line in all_bezero:
         #almacenar los separados en otra lista
         list_split =line.strip().split(',')  # Usar strip() para eliminar espacios y saltos de línea
-#si coincide  devuelve
-        if list_split[0]==kontsulta:
-             print(list_split[1])
+        bezero[list_split[0]]=list_split[1]
+        print(f"{list_split[0]}\n")
+
+   
+   kontsulta=str(input('Sartu kontsultatu nahi dozun bezeroaren izena')) 
+   print(bezero.get(kontsulta)) #devuelve el valor correspondiente al key en este caso al nombre consultado
+             
 
 
       
@@ -51,20 +56,29 @@ def  kontsulta_zenbakia(file):
 
 def ezabatu_zenbakia(file):
      file.seek(0)
-     kontsulta=str(input('Sartu kontsultatu nahi dozun bezeroaren izena')) 
      
-     lista_temporal=[]
-     all_bezero = file.readlines()
+     #mostrar todos los clientes
+     print('Hauek dira gure bezeroak\n')
+     all_bezero=file.readlines()
+     bezero={}
      for line in all_bezero:
-          list_split = line.strip().split(',')  # Usar strip() para eliminar espacios y saltos de línea
-     #si el bezero pedido coincide con alguno en la lista no vplver a escribir esa linea
-          if list_split[0]!=kontsulta:
-               lista_temporal.append(line) #meter en la nueva lista las lineas que no coincidan para luego poder resscribirlas
+        #almacenar los separados en otra lista
+        list_split =line.strip().split(',')  # Usar strip() para eliminar espacios y saltos de línea
+        if len(list_split) == 2:  # Verificar que la línea tenga exactamente dos elementos
+                bezero[list_split[0]] = list_split[1]
+                print(f"{list_split[0]}\n")
+
+     #konsultar el cliente a eliminar
+     kontsulta=str(input('Sartu kontsultatu nahi dozun bezeroaren izena')) 
+     lista_temporal=[]
+    
+     # Filtrar las líneas que no coincidan con el cliente a eliminar
+     lista_temporal = [line for line in all_bezero if not line.startswith(kontsulta + ',')]
                
      
      with open ("listin.txt", mode ="w") as file :
-        for line in lista_temporal:
-          file.write(line)
+       
+          file.writelines(lista_temporal)
 
 
 
