@@ -3,7 +3,7 @@ import os
 def main ():
     with open ("listin.txt", mode ="a+") as file :
         
-        
+         file.seek(0)
 
         
         try:
@@ -11,16 +11,18 @@ def main ():
         except ValueError:
                print('Sartutakoa ez da baliozkoa, saiatu berriro')
         else:
-               if egin==1:
-                     sartu_zenbakia(file)
-               elif egin==2:
-                    kontsulta_zenbakia(file)
-               elif egin==3:
-                    ezabatu_zenbakia(file)
-               else:
-                    while egin!="1" or egin!="2" or egin!="3" :
+                 while eginegin not in [1, 2, 3] :
                          print('sartutako emaitza ez da baliogarria, berriz erantzun')
                          egin = int(input('1-ezero baten telefono berria sartu 2-telefonoa kontsultatu 3-telefonoa ezabatu'))
+
+        if egin==1:
+                sartu_zenbakia(file)
+        elif egin==2:
+                kontsulta_zenbakia(file)
+        elif egin==3:
+                ezabatu_zenbakia(file)
+               
+                   
                     
 
           
@@ -32,6 +34,7 @@ def main ():
 def   kontsulta_zenbakia(file): 
    
    kontsulta=str(input('Sartu kontsultatu nahi dozun bezeroaren izena')) 
+   file.seek(0)
 # coger todas la lineas del fichero almacenarlas en un array
    all_bezero=file.readlines()
 #comprobar todas las lineas, separarlas por coma 
@@ -50,7 +53,7 @@ def   kontsulta_zenbakia(file):
 
 def ezabatu_zenbakia(file):
      kontsulta=str(input('Sartu kontsultatu nahi dozun bezeroaren izena')) 
-
+        file.seek(0)
      all_bezero=file.readlines()
    
      
