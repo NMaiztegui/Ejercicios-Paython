@@ -4,56 +4,71 @@ def main ():
     with open ("listin.txt", mode ="a+") as file :
         
         
-        if egin.lower()=='a':
-             sartu_zenbakia(file)
-        elif egin.lower()=='b':
-             tel_kontsultau(file)
+
         
         try:
-          egin = str(input('zer egin nahi dozu? a)ezero baten telefono berria sartu b)telefonoa kontsultatu c)telefonoa ezabatu'))
+          egin = int(input('zer egin nahi dozu? 1-bezero baten telefono berria sartu 2-telefonoa kontsultatu 3-telefonoa ezabatu'))
         except ValueError:
                print('Sartutakoa ez da baliozkoa, saiatu berriro')
-        finally:
-               while egin.lower()!="a" or egin.upper()!="b" or :
-                  print('sartutako emaitza ez da baliogarria, berriz erantzun')
-                  erantzuna = str(input('Telefono zenbaki bat sartu nahi duzu? B/E'))
-                if erantzuna()
+        else:
+               if egin==1:
+                     sartu_zenbakia(file)
+               elif egin==2:
+                    kontsulta_zenbakia(file)
+               elif egin==3:
+                    ezabatu_zenbakia(file)
+               else:
+                    while egin!="1" or egin!="2" or egin!="3" :
+                         print('sartutako emaitza ez da baliogarria, berriz erantzun')
+                         egin = int(input('1-ezero baten telefono berria sartu 2-telefonoa kontsultatu 3-telefonoa ezabatu'))
+                    
+
           
         
-
-       
-            
-
-
-        while True: 
-           try: 
-               erantzuna = str(input('Telefono zenbaki bat sartu nahi duzu? B/E'))
-               break
-           
-
-           finally :
-                if (erantzuna=="B"):
-                        sartu_zenbakia(file)
-      
-
                
          
         
             
-        
-        
-        
+def   kontsulta_zenbakia(file): 
+   
+   kontsulta=str(input('Sartu kontsultatu nahi dozun bezeroaren izena')) 
+# coger todas la lineas del fichero almacenarlas en un array
+   all_bezero=file.readlines()
+#comprobar todas las lineas, separarlas por coma 
+   for line in all_bezero:
+        #almacenar los separados en otra lista
+        list_split = line.split(',')
+#si coincide  devuelve
+        if list_split[0]==kontsulta:
+             print(list_split[1])
 
+
+      
+      
+
+
+
+def ezabatu_zenbakia(file):
+     kontsulta=str(input('Sartu kontsultatu nahi dozun bezeroaren izena')) 
+
+     all_bezero=file.readlines()
+   
+     for line in all_bezero:
+        list_split = line.split(',')
+
+        if list_split[0]==kontsulta:
+             
 
 
 
 def sartu_zenbakia(file):
-   inf= []
    izena = input('Sartu izena')
-   inf.append(izena)
    telefonoa=input('Sartu telefono zenbakia')
-   inf.append(telefonoa)
-   file.write( ";".join(inf) +"\n")
+   bezero= {
+        "bezeroa": izena,
+        "telf": telefonoa
+   }
+   file.write(f"{bezero['bezeroa']}, {bezero["telf"]}\n")
 
 
 
