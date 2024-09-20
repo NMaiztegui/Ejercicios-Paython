@@ -1,5 +1,6 @@
 import mysql.connector
-from hasieratzea import*
+
+from hasieratze import*
 dbConnect = {
  'host': 'localhost',
  'user': 'root',
