@@ -6,3 +6,5 @@ dbConnect = {
  'database': 'prueba'
 }
 konexioa = mysql.connector.connect(**dbConnect)
+kurtsorea = konexioa.cursor()
+
