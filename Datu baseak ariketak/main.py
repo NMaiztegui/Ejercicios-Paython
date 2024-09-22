@@ -3,6 +3,7 @@ import mysql.connector
 #importar funciones desde modulos
 from hasieratze import*
 from ezabatu import*
+from aukerak import*
 
 dbConnect = {
  'host': 'localhost',
@@ -17,6 +18,8 @@ kurtsorea = konexioa.cursor()
 try:
     taulak_sortu(kurtsorea,konexioa)
     datuak_hasieratu(kurtsorea,konexioa)
+    nota_sartu (kurtsorea,konexioa)
+
 except Exception as e:
     # Revertir los cambios si ocurre un error
     konexioa.rollback()
