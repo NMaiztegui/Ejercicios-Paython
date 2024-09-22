@@ -18,7 +18,9 @@ kurtsorea = konexioa.cursor()
 try:
     taulak_sortu(kurtsorea,konexioa)
     datuak_hasieratu(kurtsorea,konexioa)
-    nota_sartu (kurtsorea,konexioa)
+    #nota_sartu (kurtsorea,konexioa)
+    #nota_aldatu (kurtsorea,konexioa)
+    ezabatu_ikaslea (kurtsorea,konexioa)
 
 except Exception as e:
     # Revertir los cambios si ocurre un error
