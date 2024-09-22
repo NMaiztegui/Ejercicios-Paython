@@ -10,4 +10,4 @@ def main():
     biderketa(zenbaki1,zenbaki2)
     zatiketa(zenbaki1,zenbaki2)
 
-main()2
+main()
