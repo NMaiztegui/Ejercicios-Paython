@@ -1,4 +1,5 @@
 import mysql.connector
+from taulak_sortu import*
 dbConnect = {
  'host': 'localhost',
  'user': 'root',
@@ -7,3 +8,6 @@ dbConnect = {
 }
 konexioa = mysql.connector.connect(**dbConnect)
 kurtsorea = konexioa.cursor()
+
+taulak_sortu(kurtsorea,konexioa)
+datuak_sartu (kurtsorea,konexioa)
