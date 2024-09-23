@@ -10,6 +10,8 @@ def datuak_ezabatu (kurtsorea,konexioa):
         konexioa.rollback()
         print("Ocurrió un error: ", e)
 
+    print('Datuak ezabatu dira')
+
 def tablak_ezabatu (kurtsorea,konexioa):
     try:
         kurtsorea.execute("DROP TABLE ikasleak")
@@ -21,3 +23,5 @@ def tablak_ezabatu (kurtsorea,konexioa):
     # Revertir los cambios si ocurre un error
         konexioa.rollback()
         print("Ocurrió un error: ", e)
+    
+    print('Taulak ezabatu dira')

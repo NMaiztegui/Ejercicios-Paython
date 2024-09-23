@@ -14,6 +14,7 @@ def gehitu_ikaslea(kurtsorea,konexioa):
         konexioa.rollback()
         print("Ocurrió un error: ", e)
     
+    print(f"{izena} {abizena} ikasle berria gehitu da")
 
 def gehitu_ikasgaia (kurtsorea,konexioa):
     try:
@@ -32,6 +33,7 @@ def gehitu_ikasgaia (kurtsorea,konexioa):
         konexioa.rollback()
         print("Ocurrió un error: ", e)
 
+    print(f"{ikasgaia} irakasgaia berria gehitu da")
 def nota_sartu (kurtsorea,konexioa):
     try:
         ikaslea = input('Sartu ikasleraen izena')
@@ -50,9 +52,8 @@ def nota_sartu (kurtsorea,konexioa):
         if emaitza[0] is None:
             print('Ez da ikaslea aurkitu')
         else:
-            print('ikaslea aurkitu da')
             ikaslea_id=emaitza[0]
-            print(ikaslea_id)
+           
         
         #ikasgaiaren id-a eskuratu
         kurtsorea.execute(
@@ -64,9 +65,8 @@ def nota_sartu (kurtsorea,konexioa):
         if  emaitza[0] is None:
             print('Ez da ikasgai aurkitu')
         else:
-            print('ikasgaia aurkitu da')
             ikasgaia_id= emaitza[0]
-            print(ikasgaia_id)
+            
         
         #baloreak taulen notan sartu
         insert_notak ="INSERT INTO notak ( nota ,  oharra , ikasle_id , ikasgai_id ) VALUES (%s, %s, %s, %s)"
@@ -78,6 +78,8 @@ def nota_sartu (kurtsorea,konexioa):
     # Revertir los cambios si ocurre un error
         konexioa.rollback()
         print("Ocurrió un error: ", e)
+    
+    print(f"{ikaslea} ikasleari {nota}ko nota sartu zaio {ikasgaia} irakasgaian")
 
 
 def nota_aldatu (kurtsorea,konexioa):
@@ -113,7 +115,7 @@ def nota_aldatu (kurtsorea,konexioa):
         """, (nota, ikaslea, ikasgai))
 
         konexioa.commit()
-        print('Nota aldatu egin da')
+        print(f'{ikaslea} ikaslearen {ikasgai}ko nota aldatu eginda da')
 
 
         
@@ -152,5 +154,5 @@ def ezabatu_ikaslea (kurtsorea,konexioa):
         konexioa.rollback()
         print("Ocurrió un error: ", e)
 
-    
+    print(f"{izena}, ikaslea ezabatu eginda da")
 
