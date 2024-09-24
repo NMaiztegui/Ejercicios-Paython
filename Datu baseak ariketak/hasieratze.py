@@ -16,6 +16,7 @@ def taulak_sortu(kurtsorea,konexioa):
     konexioa.rollback()
     print("Ocurrió un error: ", e)
 
+  print('Taulak sortta daude')
 
 def datuak_hasieratu(kurtsorea,konexioa):
   try:
