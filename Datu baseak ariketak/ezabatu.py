@@ -1,8 +1,8 @@
 def datuak_ezabatu (kurtsorea,konexioa):
     try:
-        kurtsorea.execute("DELETE FROM ikasleak")
-        kurtsorea.execute("DELETE FROM ikasgaiak")
-        kurtsorea.execute("DELETE FROM notak")
+        kurtsorea.execute("TRUNCATE TABLE ikasleak")
+        kurtsorea.execute("TRUNCATE TABLE ikasgaiak")
+        kurtsorea.execute("TRUNCATE TABLE notak")
         
         konexioa.commit() #confrimar los datos
     except Exception as e:
