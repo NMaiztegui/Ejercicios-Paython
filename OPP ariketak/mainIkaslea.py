@@ -1,8 +1,8 @@
-from ikaslea import*
+import ikaslea
 
 try:
-    ikaslea1=ikaslea('Ane',-1)
-    ikaslea2=ikaslea('Iker',3)
+    ikaslea1=ikaslea.ikaslea('Ane',5)
+    ikaslea2=ikaslea.ikaslea('Iker',3)
 
     ikaslea1.mezua()
     ikaslea2.mezua()
