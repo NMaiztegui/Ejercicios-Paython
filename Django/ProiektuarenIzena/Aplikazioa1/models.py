@@ -8,5 +8,5 @@ class Ikasle(models.Model):
     jaiotze_data = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"Ikaslearen izena {self.izena} da eta abizenak   {self.abizena}."
+        return f"Ikaslearen izena: {self.izena} Aabizena: {self.abizena}."
 
