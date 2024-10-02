@@ -19,4 +19,6 @@ def ikasle_new(request):
         return render(request, 'zerrenda/ikasle_new.html', {'form':form})
 
 
-   
+def ikasgai_list(request):
+    ikasgaiZerrenda=Ikasle.objects.all() #datubastik ikasle .models-ko datu guztiak eskuratu
+    return render(request, 'zerrenda/ikasgaiak_list.html', {'ikasgaiak':ikasgaiZerrenda})
