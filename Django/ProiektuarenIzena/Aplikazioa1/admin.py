@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Ikasle
+from .models import Ikasle, Ikasgaiak
 # Register your models here.
-admin.site.register(Ikasle)
+admin.site.register([Ikasle,Ikasgaiak])
