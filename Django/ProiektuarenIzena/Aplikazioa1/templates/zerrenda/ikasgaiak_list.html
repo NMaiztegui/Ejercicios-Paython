@@ -1,8 +1,9 @@
 {% extends 'zerrenda/base.html' %}
 {% block content %}
 
- {% for ikasle in ikasleak %}
- <p>{{ ikasgaiak }}</p>
+ {% for ikasgai in ikasgaiak %}
+ <!-- <p>{{ ikasgai }}</p> -->
+ <h3><strong>Izena:</strong>{{ikasgai.izena}} <strong>Maila:</strong>{{ikasgai.maila}} <strong>Hizkuntza:</strong>{{ikasgai.hizkuntza}}</h3>
  {% endfor %}
 
 {% endblock %}

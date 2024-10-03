@@ -1,8 +1,11 @@
 {% extends 'zerrenda/base.html' %}
+{% load static %}
 {% block content %}
 
  {% for ikasle in ikasleak %}
- <p>{{ ikasle }}</p>
+
+ <h3><strong>Izena:</strong>{{ikasle.izena}} <strong>Abizena:</strong>{{ikasle.abizena}} <strong>Jaiotze Data:</strong>{{ikasle.jaiotze_data}}</h3>
+
  {% endfor %}
 
 {% endblock %}

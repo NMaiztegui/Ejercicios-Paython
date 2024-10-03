@@ -1,0 +1,10 @@
+{% extends 'zerrenda/base.html' %}
+{% block content %}
+
+ {% for nota in notak %}
+
+ <h3><strong>Ikaslea:</strong>{{nota.ikasle.izena}} {{nota.ikasle.abizena}} <strong>Ikasgaia:</strong>{{nota.ikasgai.izena}} <strong>Nota:</strong>{{nota.nota}}</h3>
+
+ {% endfor %}
+
+{% endblock %}

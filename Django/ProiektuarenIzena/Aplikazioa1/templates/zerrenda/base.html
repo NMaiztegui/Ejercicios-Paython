@@ -2,22 +2,35 @@
 <html lang="en">
 
 <head>
-    <title>Eibar Ikasleak - Main Page - Zerrenda</title>
+    <title>Eskola kudeaketa</title>
+    {% load static %}
    
     <link href="https://fonts.googleapis.com/css?family=Ruslan+Display" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstraptheme.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base_style.css' %}">
 </head>
 
 <body>
     <div class="page-header">
-        <H1><a href="{% url 'zerrenda-default' %}">Ikasleak - Zerrenda</a></H1>
+        <h1>Eskola Kudeaketa</h1>
+        <div class="nav">
+            <ul>
+                <li><a href="{% url 'zerrenda-default' %}">Ikasleak</a></li>
+                <li><a ref="{% url 'zerrenda-ikasgaiak' %}">Ikasgaiak</a></li>
+                <li><a href="{% url 'zerrenda-ikasle-new' %}">Gehitu Ikaslea</a></li>
+                <li><a href="{% url 'zerrenda-ikasgai-new' %}">Gehitu Ikagaia</a></li>
+                
+            </ul>
+        </div>
+        <!-- <H1><a href="{% url 'zerrenda-default' %}">Ikasleak - Zerrenda</a></H1>
         <H1><a href="{% url 'zerrenda-ikasgaiak' %}">Ikasgaiak - Zerrenda</a></H1>
         <a href="{% url 'zerrenda-ikasle-new' %}"><span class="glyphicon
             glyphicon-plus">Ikasle berria gehitu</span></a>
             <a href="{% url 'zerrenda-ikasgai-new' %}"><span class="glyphicon
                 glyphicon-plus">Ikasgai berria gehitu</span></a>
-    </div>
+    </div> -->
+   
     
     <div class="content container">
         <div class="row">
