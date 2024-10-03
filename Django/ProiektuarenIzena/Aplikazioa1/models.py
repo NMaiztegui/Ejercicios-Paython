@@ -19,3 +19,10 @@ class Ikasgaiak(models.Model):
 
     def __str__(self) :
         return f"{self.izena} {self.maila} {self.hizkuntza}"
+
+class Notak(models.Model):
+    nota=models.IntegerField()
+    oharra=models.CharField(max_length=200)
+    Ikasle=models.ForeignKey(Ikasle,  on_delete=models.CASCADE)
+    Ikasgaiak=models.ForeignKey(Ikasgaiak,  on_delete=models.CASCADE)#al borrar el ikasgia borra su relacion con el ikasle
+    

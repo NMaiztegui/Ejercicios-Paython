@@ -4,6 +4,7 @@ urlpatterns = [
  path('ikasleak/', views.ikasle_list, name='zerrenda-default'),
  path('Ikasle/new/', views.ikasle_new, name='zerrenda-ikasle-new'),
  path('ikasgaiak/', views.ikasgai_list, name='zerrenda-ikasgaiak'),
- path ('ikasgai/new/', views.ikasgai_new, name='zerrenda-ikasgai-new')
+ path ('ikasgai/new/', views.ikasgai_new, name='zerrenda-ikasgai-new'),
+ path('notak/', views.notak_list, name='zerrenda-notak' )
 
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from.models import Ikasle
-from.forms import IkasleForm, IkasgaiForm
+from.models import Ikasle,Ikasgaiak,Notak
+from.forms import IkasleForm, IkasgaiForm,NotaForm
 
 def ikasle_list(request):
  ikasleZerrenda=Ikasle.objects.all() #datubastik ikasle .models-ko datu guztiak eskuratu
@@ -20,16 +20,20 @@ def ikasle_new(request):
 
 
 def ikasgai_list(request):
-    ikasgaiZerrenda=Ikasle.objects.all() #datubastik ikasle .models-ko datu guztiak eskuratu
+    ikasgaiZerrenda=Ikasgaiak.objects.all() #datubastik ikasle .models-ko datu guztiak eskuratu
     return render(request, 'zerrenda/ikasgaiak_list.html', {'ikasgaiak':ikasgaiZerrenda})
 
 def ikasgai_new(request):
     if request.method == 'POST':
         form=IkasgaiForm(request.POST)
         if form.is_valid:
-            ikasle = form.save()
-            ikasle.save()
-        return redirect('errenda-ikasgaiak') #cuandoi los datos se guardan y se meten al servidor, vulev a enviar al la vista inicila
+            ikasgai = form.save()
+            ikasgai.save()
+        return redirect('zerrenda-ikasgaiak') #cuandoi los datos se guardan y se meten al servidor, vulev a enviar al la vista inicila
     else:
-        form=IkasleForm()
+        form=IkasgaiForm()
         return render(request, 'zerrenda/ikasgai_new.html', {'form':form})
+
+def notak_list(request):
+    notak_zerrenda=Notak.objects.all()
+    return render(request, 'zerrenda/notak_list.html', {'notak': notak_zerrenda})
