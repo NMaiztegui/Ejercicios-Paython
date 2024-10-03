@@ -51,6 +51,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ProiektuarenIzena.urls'
+import os
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Carpeta donde se almacenan archivos estáticos durante el desarrollo
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+
 
 TEMPLATES = [
     {
