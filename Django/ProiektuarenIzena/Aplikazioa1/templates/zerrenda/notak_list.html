@@ -1,10 +1,30 @@
 {% extends 'zerrenda/base.html' %}
 {% block content %}
 
- {% for nota in notak %}
 
- <h3><strong>Ikaslea:</strong>{{nota.ikasle.izena}} {{nota.ikasle.abizena}} <strong>Ikasgaia:</strong>{{nota.ikasgai.izena}} <strong>Nota:</strong>{{nota.nota}}</h3>
-
- {% endfor %}
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Ikaslea</th>
+            <th>Ikasgaia</th>
+            <th>Oharra</th>
+            <th>Nota</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for nota in notak %}
+        <tr>
+            <td>{{nota.Ikasle}}</td>
+            <td>{{nota.Ikasgaiak}}</td>
+            <td>{{nota.oharra}}</td>
+            <td>{{nota.nota}}</td>
+            <td> <a href="{% url 'nota-aldatu' nota.Ikasle.id nota.Ikasgaiak.id %}"><button>Nota Aldatu</button></a></td>
+            
+        </tr>
+       
+        
+    {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}

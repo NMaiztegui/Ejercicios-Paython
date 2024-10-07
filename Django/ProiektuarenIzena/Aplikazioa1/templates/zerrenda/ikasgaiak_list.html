@@ -1,9 +1,24 @@
 {% extends 'zerrenda/base.html' %}
 {% block content %}
 
- {% for ikasgai in ikasgaiak %}
- <!-- <p>{{ ikasgai }}</p> -->
- <h3><strong>Izena:</strong>{{ikasgai.izena}} <strong>Maila:</strong>{{ikasgai.maila}} <strong>Hizkuntza:</strong>{{ikasgai.hizkuntza}}</h3>
- {% endfor %}
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Izena</th>
+            <th>Maila</th>
+            <th>Hizkuntza</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for ikasgai in ikasgaiak %}
+        <tr>
+            <td>{{ ikasgai.izena }}</td>
+            <td>{{ ikasgai.maila }}</td>
+            <td>{{ ikasgai.hizkuntza }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}

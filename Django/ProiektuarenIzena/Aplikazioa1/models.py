@@ -8,7 +8,7 @@ class Ikasle(models.Model):
     jaiotze_data = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f" {self.izena} {self.abizena} {self.jaiotze_data}"
+        return f" {self.izena} {self.abizena} "
 
 
 class Ikasgaiak(models.Model):
@@ -18,11 +18,14 @@ class Ikasgaiak(models.Model):
     hizkuntza=models.CharField(max_length=75)
 
     def __str__(self) :
-        return f"{self.izena} {self.maila} {self.hizkuntza}"
+        return f"{self.izena} - {self.maila} - {self.hizkuntza}"
 
 class Notak(models.Model):
     nota=models.IntegerField()
     oharra=models.CharField(max_length=200)
     Ikasle=models.ForeignKey(Ikasle,  on_delete=models.CASCADE)
     Ikasgaiak=models.ForeignKey(Ikasgaiak,  on_delete=models.CASCADE)#al borrar el ikasgia borra su relacion con el ikasle
+    
+    def __str__(self) :
+        return f"{self.nota} {self.Ikasle}  {self.Ikasgaiak}"
     

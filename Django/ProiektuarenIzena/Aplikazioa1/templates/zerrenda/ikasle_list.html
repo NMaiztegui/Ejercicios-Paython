@@ -2,10 +2,24 @@
 {% load static %}
 {% block content %}
 
- {% for ikasle in ikasleak %}
-
- <h3><strong>Izena:</strong>{{ikasle.izena}} <strong>Abizena:</strong>{{ikasle.abizena}} <strong>Jaiotze Data:</strong>{{ikasle.jaiotze_data}}</h3>
-
- {% endfor %}
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Izena</th>
+            <th>Abizena</th>
+            <th>Jaiotze Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ikasle in ikasleak %}
+        <tr>
+            <td>{{ikasle.izena}}</td>
+            <td>{{ikasle.abizena}}</td>
+            <td>{{ikasle.jaiotze_data}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}
+
