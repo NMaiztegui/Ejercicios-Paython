@@ -22,8 +22,8 @@ class NoataAldatuForm(forms.ModelForm):
     fields=['nota','Ikasle','Ikasgaiak']
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        
-        # Hacer los campos específicos solo lectura
-        self.fields['Ikasle'].widget.attrs['readonly'] = 'readonly'  # Campo Ikasle solo lectura
-        self.fields['Ikasgaiak'].widget.attrs['readonly'] = 'readonly'  # Campo Ikasgaiak solo lectura
+        super(NoataAldatuForm,self).__init__(*args, **kwargs)
+        if self.instance:
+          
+          self.fields['Ikasle'].disabled = True 
+          self.fields['Ikasgaiak'].disabled = True  

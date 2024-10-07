@@ -61,7 +61,8 @@ def notak_new(request): #comprobar si la nota metida ya existe
         return render(request, 'zerrenda/notak_new.html', {'form':form})
 
 def nota_aldatu(request,kod_ikaslea,kod_ikasgaia):
-    nota=Notak.objects.get(Ikasle=kod_ikaslea,Ikasgaiak=kod_ikasgaia)
+    nota=Notak.objects.get(Ikasle_id=kod_ikaslea,Ikasgaiak_id=kod_ikasgaia) #coger los id asignado al ikasle y su nota
+    print(nota)
     if request.method=='POST':
         form=NoataAldatuForm(request.POST,instance=nota)
         if form.is_valid():
@@ -69,5 +70,5 @@ def nota_aldatu(request,kod_ikaslea,kod_ikasgaia):
              nota_berria.save()
         return redirect('zerrenda-notak' )
     else:
-        form=NoataAldatuForm()
+        form=NoataAldatuForm(instance=nota)
         return render(request,'zerrenda/aldatu_nota.html', {'form':form})
