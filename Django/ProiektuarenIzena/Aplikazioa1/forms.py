@@ -21,9 +21,9 @@ class NoataAldatuForm(forms.ModelForm):
     model=Notak
     fields=['nota','Ikasle','Ikasgaiak']
 
-    def __init__(self, *args, **kwargs):
+  def __init__(self, *args, **kwargs):
         super(NoataAldatuForm,self).__init__(*args, **kwargs)
         if self.instance:
-          
+         
           self.fields['Ikasle'].disabled = True 
           self.fields['Ikasgaiak'].disabled = True  

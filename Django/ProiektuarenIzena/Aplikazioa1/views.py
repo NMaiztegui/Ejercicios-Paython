@@ -63,8 +63,9 @@ def notak_new(request): #comprobar si la nota metida ya existe
 def nota_aldatu(request,kod_ikaslea,kod_ikasgaia):
     nota=Notak.objects.get(Ikasle_id=kod_ikaslea,Ikasgaiak_id=kod_ikasgaia) #coger los id asignado al ikasle y su nota
     print(nota)
+    form=NoataAldatuForm(request.POST,instance=nota)
     if request.method=='POST':
-        form=NoataAldatuForm(request.POST,instance=nota)
+        
         if form.is_valid():
              nota_berria=form.save()
              nota_berria.save()
