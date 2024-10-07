@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.db.models import Q 
+from django.contrib import messages
 from.models import Ikasle,Ikasgaiak,Notak
 from.forms import IkasleForm, IkasgaiForm,NotaForm,NoataAldatuForm
 
@@ -39,26 +40,42 @@ def notak_list(request):
     notak_zerrenda=Notak.objects.all()
     return render(request, 'zerrenda/notak_list.html', {'notak': notak_zerrenda})
 
-def notak_new(request): #comprobar si la nota metida ya existe
+
+def notak_new(request): 
     if request.method == 'POST':
-        form=NotaForm(request.POST)
-        if form.is_valid(): #validar los datos sin guardarlos 
-            nueva_nota = form.cleaned_data.get('nota')  # Aquí obtienes la nota del formulario
-            alumno = form.cleaned_data.get('Ikasle')    # Aquí obtienes el alumno del formulario
-            asignatura = form.cleaned_data.get('Ikasgaiak')  # Obtienes la asignatura del formulario
-            #comproobar si ya existe una entrada con los mismos parametros
-            nota_existe=Notak.objects.filter( Q(nota=nueva_nota)& Q (Ikasle=alumno)& Q(Ikasgaiak=asignatura)).exists()
+        form = NotaForm(request.POST)
+        
+        if form.is_valid():  # Validar los datos sin guardarlos
+            nueva_nota = form.cleaned_data.get('nota')  # Obtener la nota del formulario
+            alumno = form.cleaned_data.get('Ikasle')    # Obtener el alumno del formulario
+            asignatura = form.cleaned_data.get('Ikasgaiak')  # Obtener la asignatura del formulario
             
+            # Comprobar si ya existe una nota para este alumno y asignatura
+            nota_existe = Notak.objects.filter(
+                Q(Ikasle=alumno) & Q(Ikasgaiak=asignatura)
+            ).exists()
+
             if nota_existe:
-            # Si ya existe una nota similar, muestra un error
-                    form.add_error('nota', 'Ya existe una nota para este alumno en esta asignatura.')
-            else:#si nota no existe
-                 form.save()
-                 return redirect('zerrenda-notak') #cuandoi los datos se guardan y se meten al servidor, vulev a enviar al la vista inicila
-                
+                # Si ya existe una nota similar, muestra un error
+                form.add_error('nota', 'Ya existe una nota para este alumno en esta asignatura.')
+            elif nueva_nota > 10:
+                # Validar si la nota es mayor a 10
+                form.add_error('nota', 'La nota no puede ser mayor que 10.')
+            elif nueva_nota <= 10:
+                # Si todo está bien, guardar la nueva nota
+                form.save()
+                return redirect('zerrenda-notak')  # Redirigir a la vista inicial después de guardar
+
+        # Si no es válido o hay algún error, volver a mostrar el formulario con los errores
+        return render(request, 'zerrenda/notak_new.html', {'form': form})
+
     else:
-        form=NotaForm()
-        return render(request, 'zerrenda/notak_new.html', {'form':form})
+        form = NotaForm()  # Si no es un POST, mostrar un formulario vacío
+    
+    return render(request, 'zerrenda/notak_new.html', {'form': form})
+
+
+
 
 def nota_aldatu(request,kod_ikaslea,kod_ikasgaia):
     nota=Notak.objects.get(Ikasle_id=kod_ikaslea,Ikasgaiak_id=kod_ikasgaia) #coger los id asignado al ikasle y su nota
@@ -73,3 +90,19 @@ def nota_aldatu(request,kod_ikaslea,kod_ikasgaia):
     else:
         form=NoataAldatuForm(instance=nota)
         return render(request,'zerrenda/aldatu_nota.html', {'form':form})
+
+def nota_ezabatu(request,kod_ikaslea,kod_ikasgaia):
+    nota=Notak.objects.get(Ikasle_id=kod_ikaslea,Ikasgaiak_id=kod_ikasgaia) #coger los id asignado al ikasle y su nota
+    print(nota)
+    if request.method=='POST':
+        nota.delete()
+        messages.success(request,'Nota ezabatua')
+        return redirect('zerrenda-notak')
+
+def ikaslea_ezabatu(request,kod_ikaslea):
+    ikaslea=Ikasle.objects.get(id=kod_ikaslea)
+    print(ikaslea)
+    if request.method=='POST':
+        ikaslea.delete()
+        messages.success(request,'Ikaslea ezabatua')
+        return redirect('zerrenda-default')

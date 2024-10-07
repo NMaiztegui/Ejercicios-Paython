@@ -22,3 +22,9 @@ ul {
   li a:hover {
     background-color: #111;
   }
+/* styles.css */
+ul.errorlist {
+  background-color: white; /* Fondo blanco */
+  list-style-type: none;   /* Quitar el estilo de lista por defecto */
+  color: red;              /* Color de texto rojo para mantener el estilo de error */
+}

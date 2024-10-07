@@ -19,6 +19,13 @@
             <td>{{nota.oharra}}</td>
             <td>{{nota.nota}}</td>
             <td> <a href="{% url 'nota-aldatu' nota.Ikasle.id nota.Ikasgaiak.id %}"><button>Nota Aldatu</button></a></td>
+            <td>
+                <form method="post" action="{% url 'nota-ezabatu' nota.Ikasle.id nota.Ikasgaiak.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar esta nota?');">Eliminar</button>
+                </form>
+            </td>
+           
             
         </tr>
        

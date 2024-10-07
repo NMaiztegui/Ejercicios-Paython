@@ -16,6 +16,12 @@
             <td>{{ikasle.izena}}</td>
             <td>{{ikasle.abizena}}</td>
             <td>{{ikasle.jaiotze_data}}</td>
+            <td>
+                <form method="post" action="{% url 'ikaslea-ezabatu' ikasle.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar esta ikasle?');">Eliminar</button>
+                </form>
+            </td>
         </tr>
     {% endfor %}
     </tbody>
