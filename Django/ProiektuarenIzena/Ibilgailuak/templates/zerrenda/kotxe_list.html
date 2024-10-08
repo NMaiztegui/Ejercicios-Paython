@@ -1,0 +1,29 @@
+{% extends 'zerrenda/basea.html' %}
+{% block content %}
+
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Marka</th>
+            <th>Modeloa</th>
+            <th>Matricula</th>
+           
+    </thead>
+    <tbody>
+        {% for kotxe in kotxeak %}
+        <tr>
+            <td>{{kotxe.marca}}</td>
+            <td>{{kotxe.modelo}}</td>
+            <td>{{kotxe.matricula}}</td>
+            <td>{{kotxe.alquilado}}Alokatua {% else %} Libre {% endif %}</td> <!-- si es true alaparecera como alokatua, else libre -->
+           
+            
+        </tr>
+       
+        
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,4 +1,11 @@
 from django.urls import path
 from . import views
-path('ibilgailuak/main/', views.main_page, name='horri-nagusia'),
-path('ibilgailuak/kotxe/list', views.kotxe_list, name='kotxe-zerrenda')
+urlpatterns = [
+path('main/', views.main_page, name='horri-nagusia'),
+path('kotxe/list/', views.kotxe_list, name='kotxe-zerrenda'),
+path('kotxea/new/', views.kotxe_new, name='kotxea-new'),
+path('bezero/', views.bezeroa_list, name='bezeroak-zerrenda'),
+path('bezero/new/',views.bezeroa_new, name='bezeroa-new'),
+path('alokatuak/', views.alokatuak_list, name='alokatuak-zerrenda'),
+path('alokatuak/new', views.alokatuak_new, name='alokatuak-new',)
+]

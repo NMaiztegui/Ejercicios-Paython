@@ -1,3 +1,64 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.db.models import Q 
+from .models import Kotxea,Bezeroa,AlokatutakoKotxeak
+from.forms import KotxeForm,BezeroaForm,AlokatuaForm
 
-# Create your views here.
+def main_page(request):
+    return render(request,'hasiera.html')
+
+
+def kotxe_list(request):
+   # Obtener todos los coches
+    kotxeak = Kotxea.objects.all()
+
+    # Obtener todos los IDs de los coches que están alquilados en una sola consulta,set se asegura de que si hay algguna duplicacion en la base de datos, se borre en la lista 
+    alquilados_ids = set(AlokatutakoKotxeak.objects.values_list('kotxea_id', flat=True))
+
+    # Iterar sobre los coches y actualizar su atributo 'alokatua'
+    for kotxea in kotxeak:
+        kotxea.alokatua = kotxea.id in alquilados_ids  # Actualiza el estado de alquilado, si se encuentra el id del kotxe en alquilados_id, kotxe.alokatua=True
+
+
+    return render(request,'zerrenda/kotxe_list.html', {'kotxeak':kotxeak})
+
+def kotxe_new(request):
+    #al principio muestra un formulario vacio, cuando se le de a sumit es cuando se ejecuta el metodo sumit y manda los datos a la base de datos, y nos redirecciona a a la pagina principla
+    if request.method=='POST':
+        form=KotxeForm(request.POST)
+        if form.is_valid():
+            kotxea=form.save()
+            kotxea.save()
+        return redirect('kotxe-zerrenda')
+    else:
+        form=KotxeForm()
+        return render(request,'formularioak/kotxea_new.html', {'form':form})#cuandoi los datos se guardan y se meten al servidor, vulev a enviar al la vista inicila
+
+def bezeroa_list(rquest):
+    bezeroak=Bezeroa.objects.all()
+    return render(rquest, 'zerrenda/bezero_list.html', {'bezeroak':bezeroak})
+
+def bezeroa_new(request):
+    if request.method =='POST':
+        form=BezeroaForm(request.POST)
+        if form.is_valid():
+            bezeroa=form.save()
+            bezeroa.save()
+        return redirect('bezeroak-zerrenda')
+    else:
+        form=BezeroaForm
+        return render(request, 'formularioak/bezero_berria.html', {'form':form})
+
+def alokatuak_new(request):
+    if request.method=='POST':
+        form=AlokatuaForm(request.POST)
+        if form.is_valid(): 
+            alokatu=form.save()
+            alokatu.save()
+        return redirect('alokatuak-zerrenda')
+    else:
+        form=AlokatuaForm
+        return render(request, 'formularioak/alokatua_new.html', {'form':form})
+
+def alokatuak_list(rquest):
+    alokatuak=AlokatutakoKotxeak.objects.all()
+    return render(rquest, 'zerrenda/alokatuak_list.html', {'kotxeak':alokatuak})

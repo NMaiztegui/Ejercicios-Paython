@@ -19,5 +19,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Aplikazioa1.urls')) #La función include() se utiliza para incluir otras configuraciones de URLs. En este caso, estás indicando que cualquier solicitud que llegue a la raíz del sitio ('', es decir, /) debe ser manejada por el archivo urls.py #en la aplicación Ariketa1, el archivo urls.py podría definir rutas específicas para manejar diferentes páginas o funciones,
+    path('', include('Aplikazioa1.urls')) ,
+    path('ibilgailuak/', include('Ibilgailuak.urls'))#La función include() se utiliza para incluir otras configuraciones de URLs. En este caso, estás indicando que cualquier solicitud que llegue a la raíz del sitio ('', es decir, /) debe ser manejada por el archivo urls.py #en la aplicación Ariketa1, el archivo urls.py podría definir rutas específicas para manejar diferentes páginas o funciones,
 ]
