@@ -8,6 +8,7 @@
             <th>Marka</th>
             <th>Modeloa</th>
             <th>Matricula</th>
+            <th>Egoera</th>
            
     </thead>
     <tbody>
@@ -16,7 +17,14 @@
             <td>{{kotxe.marca}}</td>
             <td>{{kotxe.modelo}}</td>
             <td>{{kotxe.matricula}}</td>
-            <td>{{kotxe.alquilado}}Alokatua {% else %} Libre {% endif %}</td> <!-- si es true alaparecera como alokatua, else libre -->
+            <td>
+                {% if kotxe.alokatua %} 
+                  Alokatua 
+                {% else %} 
+                  Libre 
+                {% endif %}
+              </td>
+           <!-- si es true alaparecera como alokatua, else libre -->
            
             
         </tr>

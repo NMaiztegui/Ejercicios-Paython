@@ -4,7 +4,7 @@ from .models import Kotxea,Bezeroa,AlokatutakoKotxeak
 class KotxeForm(forms.ModelForm):
     class Meta:
         model=Kotxea
-        fields=['marca','modelo','matricula', 'alokatua']
+        fields=['marca','modelo','matricula', ]
 
 class BezeroaForm(forms.ModelForm):
     class Meta:

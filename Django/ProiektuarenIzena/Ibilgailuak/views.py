@@ -11,12 +11,7 @@ def kotxe_list(request):
    # Obtener todos los coches
     kotxeak = Kotxea.objects.all()
 
-    # Obtener todos los IDs de los coches que están alquilados en una sola consulta,set se asegura de que si hay algguna duplicacion en la base de datos, se borre en la lista 
-    alquilados_ids = set(AlokatutakoKotxeak.objects.values_list('kotxea_id', flat=True))
-
-    # Iterar sobre los coches y actualizar su atributo 'alokatua'
-    for kotxea in kotxeak:
-        kotxea.alokatua = kotxea.id in alquilados_ids  # Actualiza el estado de alquilado, si se encuentra el id del kotxe en alquilados_id, kotxe.alokatua=True
+    
 
 
     return render(request,'zerrenda/kotxe_list.html', {'kotxeak':kotxeak})

@@ -1,0 +1,31 @@
+{% extends 'zerrenda/basea.html' %}
+{% block content %}
+
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Izena</th>
+            <th>Abizena</th>
+            <th>DNI</th>
+           
+    </thead>
+    <tbody>
+        {% for bezero in bezeroak %}
+        <tr>
+            <td>{{bezero.izena}}</td>
+            <td>{{bezero.abizena}}</td>
+            <td>{{bezero.dni}}</td>
+            
+             
+           <!-- si es true alaparecera como alokatua, else libre -->
+           
+            
+        </tr>
+       
+        
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
