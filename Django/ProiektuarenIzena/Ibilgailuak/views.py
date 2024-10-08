@@ -48,17 +48,44 @@ def bezeroa_new(request):
         form=BezeroaForm
         return render(request, 'formularioak/bezero_berria.html', {'form':form})
 
+# def alokatuak_new(request):
+#     if request.method=='POST':
+#         form=AlokatuaForm(request.POST)
+#         if form.is_valid(): 
+#             alokatu=form.save()
+#             alokatu.save()
+#         return redirect('alokatuak-zerrenda')
+#     else:
+#         form=AlokatuaForm
+#         return render(request, 'formularioak/alokatua_new.html', {'form':form})
+
+def alokatuak_list(rquest):
+    alokatuak=AlokatutakoKotxeak.objects.all()
+    return render(rquest, 'zerrenda/alokatuak_list.html', {'kotxeak':alokatuak})
+
 def alokatuak_new(request):
     if request.method=='POST':
         form=AlokatuaForm(request.POST)
-        if form.is_valid(): 
+        if form.is_valid():
+                
+            aukeratutako_kotxea= form.cleaned_data.get('kotxea')
+            # Actualizar el estado del coche a alquilado
+            kotxea = Kotxea.objects.get(id=aukeratutako_kotxea.id)
+            kotxea.alokatua = True  # Establecer alokatua a True
+            kotxea.save()  # Guardar el cambio en la base de datos
+
             alokatu=form.save()
             alokatu.save()
         return redirect('alokatuak-zerrenda')
     else:
         form=AlokatuaForm
         return render(request, 'formularioak/alokatua_new.html', {'form':form})
+    
 
-def alokatuak_list(rquest):
-    alokatuak=AlokatutakoKotxeak.objects.all()
-    return render(rquest, 'zerrenda/alokatuak_list.html', {'kotxeak':alokatuak})
+
+
+      
+        
+       
+
+      
