@@ -56,7 +56,7 @@ def bezeroa_new(request):
 
 def alokatuak_list(rquest):
     alokatuak=AlokatutakoKotxeak.objects.all()
-    return render(rquest, 'zerrenda/alokatuak_list.html', {'kotxeak':alokatuak})
+    return render(rquest, 'zerrenda/alokatuak_list.html', {'alokatuak':alokatuak})
 
 def alokatuak_new(request):
     if request.method=='POST':

@@ -1,0 +1,31 @@
+{% extends 'zerrenda/basea.html' %}
+{% block content %}
+
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Kotxea</th>
+            <th>Bezeroa</th>
+            <th>Alokatze Data</th>
+           
+    </thead>
+    <tbody>
+        {% for alokatua in alokatuak %}
+        <tr>
+            <td>{{alokatua.kotxea}}</td>
+            <td>{{alokatua.bezeroa}}</td>
+            <td>{{alokatua.alokatze_data}}</td>
+            
+             
+           <!-- si es true alaparecera como alokatua, else libre -->
+           
+            
+        </tr>
+       
+        
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
