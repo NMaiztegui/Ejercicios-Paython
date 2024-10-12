@@ -7,5 +7,6 @@ path('kotxea/new/', views.kotxe_new, name='kotxea-new'),
 path('bezero/', views.bezeroa_list, name='bezeroak-zerrenda'),
 path('bezero/new/',views.bezeroa_new, name='bezeroa-new'),
 path('alokatuak/', views.alokatuak_list, name='alokatuak-zerrenda'),
-path('alokatuak/new', views.alokatuak_new, name='alokatuak-new',)
+path('alokatuak/new', views.alokatuak_new, name='alokatuak-new'),
+path ('alokatzea/ezabatu/<int:kod_kotxea>/<int:kod_bezeroa>/', views.alokatzea_ezabatu,name='alokatzea-ezabatu')
 ]

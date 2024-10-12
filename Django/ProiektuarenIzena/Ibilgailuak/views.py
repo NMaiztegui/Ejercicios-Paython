@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.db.models import Q 
+from django.contrib import messages
 from .models import Kotxea,Bezeroa,AlokatutakoKotxeak
 from.forms import KotxeForm,BezeroaForm,AlokatuaForm
 
@@ -75,7 +76,20 @@ def alokatuak_new(request):
     else:
         form=AlokatuaForm
         return render(request, 'formularioak/alokatua_new.html', {'form':form})
-    
+
+def alokatzea_ezabatu (request,kod_kotxea,kod_bezeroa):
+    kotxea=AlokatutakoKotxeak.objects.get(kotxea_id=kod_kotxea,bezeroa_id=kod_bezeroa)
+    kotxea_libre=Kotxea.objects.get(id=kod_kotxea)
+    print(kotxea)
+    if request.method=='POST':
+        kotxea.delete()
+        kotxea_libre.alokatua = False  # Establecer alokatua a True
+        kotxea_libre.save()  #
+        messages.success(request,'Alokatzea ezabatu da')
+        return redirect('alokatuak-zerrenda')
+        
+
+
 
 
 

@@ -16,6 +16,12 @@
             <td>{{alokatua.kotxea}}</td>
             <td>{{alokatua.bezeroa}}</td>
             <td>{{alokatua.alokatze_data}}</td>
+            <td> 
+                <form method="post" action="{% url 'alokatzea-ezabatu' alokatua.kotxea.id alokatua.bezeroa.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('Alokatze hau ezabatzera doa, ados?');">Eliminar</button>
+                </form>
+            </td>
             
              
            <!-- si es true alaparecera como alokatua, else libre -->
